@@ -6,7 +6,7 @@ export interface Context {
     id: string;
     email: string;
   } | null;
-  supabase: SupabaseClient;
+  supabase: SupabaseClient<any, 'public', any>;
 }
 
 export async function createContext(): Promise<Context> {
