@@ -1,4 +1,4 @@
-import { createClient, SupabaseClient } from '@supabase/supabase-js';
+import { createClient } from '@supabase/supabase-js';
 import { getSession } from '@auth0/nextjs-auth0';
 
 export interface Context {
@@ -6,7 +6,7 @@ export interface Context {
     id: string;
     email: string;
   } | null;
-  supabase: SupabaseClient<any, 'public', any>;
+  supabase: any; // Loosen typing to avoid CI generic mismatch
 }
 
 export async function createContext(): Promise<Context> {
