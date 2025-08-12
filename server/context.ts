@@ -6,7 +6,7 @@ export interface Context {
     id: string;
     email: string;
   } | null;
-  supabase: any; // Loosen typing to avoid CI generic mismatch
+  supabase: any; // Relaxed typing for CI/build stability
 }
 
 export async function createContext(): Promise<Context> {
@@ -21,7 +21,7 @@ export async function createContext(): Promise<Context> {
     if (!session?.user) {
       return {
         user: null,
-        supabase,
+        supabase: supabase as any,
       };
     }
 
@@ -30,12 +30,12 @@ export async function createContext(): Promise<Context> {
         id: session.user.sub!,
         email: session.user.email || '',
       },
-      supabase,
+      supabase: supabase as any,
     };
   } catch (error) {
     return {
       user: null,
-      supabase,
+      supabase: supabase as any,
     };
   }
 }
