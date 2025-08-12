@@ -1,16 +1,17 @@
-import { createClient } from '@supabase/supabase-js';
+import { createClient, SupabaseClient } from '@supabase/supabase-js';
 import { getSession } from '@auth0/nextjs-auth0';
+import type { Database } from '../types/supabase';
 
 export interface Context {
   user: {
     id: string;
     email: string;
   } | null;
-  supabase: any; // Relaxed typing for CI/build stability
+  supabase: SupabaseClient<Database>;
 }
 
 export async function createContext(): Promise<Context> {
-  const supabase = createClient(
+  const supabase = createClient<Database>(
     process.env.NEXT_PUBLIC_SUPABASE_URL!,
     process.env.SUPABASE_SERVICE_ROLE_KEY!,
   );
@@ -21,7 +22,7 @@ export async function createContext(): Promise<Context> {
     if (!session?.user) {
       return {
         user: null,
-        supabase: supabase as any,
+        supabase,
       };
     }
 
@@ -30,12 +31,12 @@ export async function createContext(): Promise<Context> {
         id: session.user.sub!,
         email: session.user.email || '',
       },
-      supabase: supabase as any,
+      supabase,
     };
   } catch (error) {
     return {
       user: null,
-      supabase: supabase as any,
+      supabase,
     };
   }
 }
