@@ -1,0 +1,39 @@
+{
+  "name": "chatgpt-clone-mobile",
+  "version": "0.1.0",
+  "private": true,
+  "scripts": {
+    "dev": "next dev",
+    "build": "next build",
+    "start": "next start",
+    "lint": "next lint"
+  },
+  "dependencies": {
+    "next": "14.2.31",
+    "react": "^18",
+    "react-dom": "^18",
+    "@trpc/server": "^10.45.0",
+    "@trpc/client": "^10.45.0",
+    "@trpc/react-query": "^10.45.0",
+    "@trpc/next": "^10.45.0",
+    "@tanstack/react-query": "^4.36.1",
+    "@supabase/supabase-js": "^2.38.4",
+    "@auth0/nextjs-auth0": "^3.8.0",
+    "@google/generative-ai": "^0.2.1",
+    "bootstrap": "^5.3.2",
+    "bootstrap-icons": "^1.11.3",
+    "react-bootstrap": "^2.9.0",
+    "zod": "^3.22.4",
+    "superjson": "^2.2.1",
+    "react-markdown": "^9.0.1",
+    "remark-gfm": "^4.0.0"
+  },
+  "devDependencies": {
+    "typescript": "^5",
+    "@types/node": "^20",
+    "@types/react": "^18",
+    "@types/react-dom": "^18",
+    "eslint": "^8",
+    "eslint-config-next": "14.2.31"
+  }
+}
